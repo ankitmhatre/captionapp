@@ -19,16 +19,32 @@ struct CaptionUnderCategoriesView: View {
     var body: some View {
         ScrollView(style.axes) {
             if self.captionList.count > 0 {
-        Grid(self.captionList, id: \.self) { caption in
-            VStack(alignment: .leading){
-                Text(caption.text!)
-            }.shadow(radius: 10)
-            .background(Color.gray)
-                
-            }
-        .gridStyle(
-            self.style
-        )
+                Grid(self.captionList, id: \.self) { caption in
+                    VStack{
+                            Text(caption.text!)
+                                .font(Font.custom("Montserrat-regular", size: 15))
+                                .foregroundColor(Color(hex: "#686584"))
+                                .padding(.leading, 20)
+            
+                                .padding(.trailing, 20)
+                            
+                            HStack(alignment:.bottom){
+                                Text("icon1")
+                            }
+                            .frame(width: 370, height: 20)
+                            .background(RoundedCorners(color: Color(hex: "#F8EAE9"), tl: 0, tr: 0, bl: 10, br: 10))
+                        
+                        
+        
+                    }
+                    .frame(width: 370)
+                    .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
+                    .background(RoundedCorners(color: Color(hex: "#FEFEFE"), tl: 0, tr: 0, bl: 10, br: 10))
+                    .padding(10)
+                }
+                .gridStyle(
+                    self.style
+                )
             }else{
                 LottieView(name: "loading", loopMode: .loop)
                     .frame(width: 250, height: 250)
@@ -43,7 +59,7 @@ struct CaptionUnderCategoriesView: View {
         db.collection("categories")
             .document(category_id)
             .collection("captions")
-            .limit(to: 10)
+            .limit(to: 1)
             .getDocuments()
             { (querySnapshot, err) in
                 
@@ -64,11 +80,11 @@ struct CaptionUnderCategoriesView: View {
                     captionList = captionsList
                     
                 }
-            
-        
-        
+                
+                
+                
+            }
     }
-}
-
-
+    
+    
 }
