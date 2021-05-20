@@ -1,0 +1,6 @@
+framework module Pods_captionapp_captionappUITests {
+  umbrella header "Pods-captionapp-captionappUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -21,30 +21,41 @@ struct CaptionUnderCategoriesView: View {
             if self.captionList.count > 0 {
                 Grid(self.captionList, id: \.self) { caption in
                     VStack{
+                        
+                        
+                        VStack{
                             Text(caption.text!)
                                 .font(Font.custom("Montserrat-regular", size: 15))
                                 .foregroundColor(Color(hex: "#686584"))
                                 .padding(.leading, 20)
-            
+                                .lineLimit(nil)
                                 .padding(.trailing, 20)
+                                .fixedSize(horizontal: false, vertical: true)
                             
-                            HStack(alignment:.bottom){
-                                Text("icon1")
-                            }
-                            .frame(width: 370, height: 20)
-                            .background(RoundedCorners(color: Color(hex: "#F8EAE9"), tl: 0, tr: 0, bl: 10, br: 10))
+                            
+                            
+                        }
+                        .frame(width: 370)
+                        
+                        .padding(10)
                         
                         
-        
+                        
+                        HStack(alignment:.bottom){
+                            Text("icon1")
+                        }
+                        .frame(width: 370, height: 20)
+                        .background(RoundedCorners(color: Color(hex: "#F8EAE9"), tl: 0, tr: 0, bl: 10, br: 10))
+                        
                     }
-                    .frame(width: 370)
-                    .shadow(color: Color.black.opacity(0.3), radius: 4, x: 0, y: 0)
-                    .background(RoundedCorners(color: Color(hex: "#FEFEFE"), tl: 0, tr: 0, bl: 10, br: 10))
-                    .padding(10)
+                    
+                    
+                    
                 }
                 .gridStyle(
                     self.style
                 )
+                    .background(RoundedCorners(color: Color(hex: "#F8EAE9"), tl: 10, tr: 10, bl: 10, br: 10)).padding(10)
             }else{
                 LottieView(name: "loading", loopMode: .loop)
                     .frame(width: 250, height: 250)
